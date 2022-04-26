@@ -11,10 +11,10 @@ def All():
     websitesTuple = ('https://slovored.com/search/all/' + word, 'https://rechnik.chitanka.info/w/' + word)
 
     outputSlovored = requests.get(websitesTuple[0], headers=headers).text
-    formatWebsite1 = BeautifulSoup(outputSlovored, 'lxml')
+    formatWebsite1 = BeautifulSoup(outputSlovored, 'html.parser')
 
     outputRechnik = requests.get(websitesTuple[1], headers=headers).text
-    formatWebsite2 = BeautifulSoup(outputRechnik, 'lxml')
+    formatWebsite2 = BeautifulSoup(outputRechnik, 'html.parser')
 
     def Prevod_function():
         slovoredBgToEng = formatWebsite1.div.next_sibling.next_sibling.next_sibling.next_sibling.next_sibling.next_sibling.table.tr.td.next_sibling.b
